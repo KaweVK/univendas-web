@@ -9,8 +9,15 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastro-produto" element={<CadastroProduto />} />
+
+        <Route path='/auth'>
+          <Route path="login" element={<Login />} />
+        </Route>
+        
+        <Route path='/'>
+          <Route path="cadastro-produto" element={<CadastroProduto />} />
+        </Route>
+        
       </Routes>
     </BrowserRouter>
   </StrictMode>,
