@@ -1,0 +1,9 @@
+.banner {
+    background-color: white;
+    text-align: center;
+}
+
+.banner img {
+    width: 100%;
+    height: 250px;
+}

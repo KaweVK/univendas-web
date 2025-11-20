@@ -1,0 +1,23 @@
+.categoria {
+    padding: 32px;
+    text-align: center;
+    padding-top: 0%;
+    width: auto;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.categoria h3 {
+    color: rgb(0, 0, 0);
+    font-size: 32px;
+    border-bottom: 4px solid;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.categoria .produtos {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
