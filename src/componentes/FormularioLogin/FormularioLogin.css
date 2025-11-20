@@ -25,3 +25,21 @@
     margin-bottom: 8px;
     font-weight: 400;
 }
+
+.formulario a {
+    color: #FFFFFF;
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    text-decoration: none;
+}
+
+.formulario a:hover {
+    text-decoration: underline;
+}
+
+.formulario button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
