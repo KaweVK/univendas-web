@@ -4,7 +4,7 @@ import Formulario from '../../componentes/Formulario'
 import Categoria from '../../componentes/Categoria'
 import BarraRodape from '../../componentes/BarraRodape'
 
-function CadastroProduto() {
+export const CadastroProduto = () => {
   const categorias = [
     {
       nome: 'Móvel',
@@ -72,5 +72,3 @@ function CadastroProduto() {
     </>
   )
 }
-
-export default CadastroProduto
