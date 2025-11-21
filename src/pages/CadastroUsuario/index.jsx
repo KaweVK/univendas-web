@@ -1,6 +1,7 @@
 import { Banner } from '../../componentes/Banner/index.jsx'
 import { BarraRodape } from '../../componentes/BarraRodape/index.jsx'
 import { FormularioCadastroUsuario } from '../../componentes/FormularioCadastroUsuario/index.jsx'
+import { NavBar } from '../../componentes/NavBar/index.jsx'
 import api from '../../services/api.js'
 import { useNavigate, useLocation } from 'react-router-dom'
 
@@ -47,7 +48,7 @@ export const CadastroUsuario = () => {
   return (
     <>
       <div>
-        <Banner />
+        <NavBar />
         <FormularioCadastroUsuario 
             aoCadastrarUsuario={gerenciarUsuario} 
             href={"/auth/login"}

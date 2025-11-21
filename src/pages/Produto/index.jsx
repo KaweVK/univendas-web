@@ -5,6 +5,7 @@ import { BarraRodape } from '../../componentes/BarraRodape/index.jsx';
 import { DetalheProduto } from '../../componentes/DetalheProduto/index.jsx';
 import { Botao } from '../../componentes/Botao/index.jsx';
 import api from '../../services/api.js'; 
+import { NavBar } from '../../componentes/NavBar/index.jsx';
 
 export const Produto = () => {
     const { id } = useParams();
@@ -41,7 +42,6 @@ export const Produto = () => {
     if (!produto) {
         return (
             <>
-                <Banner />
                 <div style={{ textAlign: 'center', margin: '50px' }}>
                     <h2>Carregando detalhes...</h2>
                 </div>
@@ -52,7 +52,7 @@ export const Produto = () => {
 
     return (
         <>
-            <Banner />
+            <NavBar/>
             <DetalheProduto 
                 nome={produto.name} 
                 descricao={produto.description} 
@@ -68,6 +68,10 @@ export const Produto = () => {
                 <div onClick={excluirProduto}>
                     <Botao className={'botao-excluir'}>Excluir Produto</Botao>
                 </div>
+
+                <Link to='/'>
+                    <Botao className={'botao-padrao'}>Voltar</Botao>
+                </Link>
             </div>
 
             <BarraRodape />

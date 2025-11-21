@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Banner } from '../../componentes/Banner/index.jsx'
+import { Botao } from '../../componentes/Botao/index.jsx'
 import { BarraRodape } from '../../componentes/BarraRodape/index.jsx'
 import { CardUsuario } from '../../componentes/CardUsuario/index.jsx'
 import { Link } from 'react-router-dom'
 import api from '../../services/api.js'
 import './usuarios.css'
+import { NavBar } from '../../componentes/NavBar/index.jsx'
 
 export const Usuarios = () => {
     const [usuarios, setUsuarios] = useState([]);
@@ -24,16 +25,16 @@ export const Usuarios = () => {
 
     return (
         <>
-            <Banner />
+            <NavBar />
             <div className='lista-usuarios'>
                 <h2>Usuários Cadastrados</h2>
                 {usuarios.length > 0 ? (
                     usuarios.map(usuario => (
-                        <Link to={`/usuario/${usuario.id}`} key={usuario.id} style={{textDecoration: 'none'}}>
-                            <CardUsuario 
-                                nome={usuario.name} 
-                                email={usuario.email} 
-                                cidade={usuario.city}   
+                        <Link to={`/usuario/${usuario.id}`} key={usuario.id} style={{ textDecoration: 'none' }}>
+                            <CardUsuario
+                                nome={usuario.name}
+                                email={usuario.email}
+                                cidade={usuario.city}
                                 img={usuario.imageUrl || '../../../public/imagens/Logos/avatar.webp'}
                             />
                         </Link>
@@ -41,6 +42,14 @@ export const Usuarios = () => {
                 ) : (
                     <p>Nenhum usuário encontrado.</p>
                 )}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
+                <Link to='/cadastro-produto'>
+                    <Botao className="botao-padrao">Cadastrar Produto</Botao>
+                </Link>
+                <Link to='/usuarios'>
+                    <Botao className="botao-padrao">Ver Usuarios</Botao>
+                </Link>
             </div>
             <BarraRodape />
         </>

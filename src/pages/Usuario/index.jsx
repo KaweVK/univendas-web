@@ -7,6 +7,7 @@ import { Botao } from '../../componentes/Botao/index.jsx';
 import api from '../../services/api.js';
 import './Usuario.css';
 import { jwtDecode } from 'jwt-decode';
+import { NavBar } from '../../componentes/NavBar/index.jsx';
 
 export const Usuario = () => {
     const { id } = useParams();
@@ -68,7 +69,7 @@ export const Usuario = () => {
 
     return (
         <>
-            <Banner />
+            <NavBar />
             <DetalheUsuario
                 id={usuario.id}
                 nome={usuario.name}

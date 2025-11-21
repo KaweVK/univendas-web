@@ -4,6 +4,7 @@ import { BarraRodape } from '../../componentes/BarraRodape/index.jsx'
 import api from '../../services/api.js'
 import { jwtDecode } from "jwt-decode"; 
 import { useNavigate, useLocation } from 'react-router-dom'
+import { NavBar } from '../../componentes/NavBar/index.jsx';
 
 export const CadastroProduto = () => {
   const navigate = useNavigate();
@@ -65,7 +66,7 @@ export const CadastroProduto = () => {
   return (
     <>
       <div>
-        <Banner />
+        <NavBar />
         <Formulario 
             aoCadastrarProduto={salvarProduto} 
             categorias={categorias}

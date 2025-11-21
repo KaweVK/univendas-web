@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import './Produtos.css'
 import { Botao } from '../../componentes/Botao/index.jsx'
 import api from '../../services/api.js'
+import { NavBar } from '../../componentes/NavBar/index.jsx'
 
 export const Produtos = () => {
     const [produtos, setProdutos] = useState([]);
@@ -26,7 +27,7 @@ export const Produtos = () => {
 
     return (
         <>
-            <Banner />
+            <NavBar />
             <div className='lista-produtos'>
                 <h2>Produtos a venda</h2>
                 {produtos.length > 0 ? (
