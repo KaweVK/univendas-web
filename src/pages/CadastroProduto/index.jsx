@@ -49,7 +49,7 @@ export const CadastroProduto = () => {
             alert("Produto cadastrado com sucesso!");
         }
 
-        navigate('/'); 
+        navigate("/produtos"); 
 
     } catch (error) {
         console.error("Erro completo:", error);

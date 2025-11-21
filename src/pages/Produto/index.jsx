@@ -31,7 +31,7 @@ export const Produto = () => {
             try {
                 await api.delete(`/shop/${id}`);
                 alert("Produto excluído com sucesso!");
-                navigate('/'); 
+                navigate('/produtos'); 
             } catch (erro) {
                 console.error("Erro ao excluir:", erro);
                 alert("Não foi possível excluir o produto.");
@@ -69,7 +69,7 @@ export const Produto = () => {
                     <Botao className={'botao-excluir'}>Excluir Produto</Botao>
                 </div>
 
-                <Link to='/'>
+                <Link to='/produtos'>
                     <Botao className={'botao-padrao'}>Voltar</Botao>
                 </Link>
             </div>

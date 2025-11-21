@@ -25,6 +25,8 @@
 .bar section img {
     width: 29px;
     height: auto;
+    justify-content: center;
+    text-align: center;
 }
 
 Link {

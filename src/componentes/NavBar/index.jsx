@@ -15,22 +15,19 @@ export const NavBar = () => {
         <section>
             <ul>
                 <li>
-                    <Link to={`/`} style={{ color: "#FFF" }}>
+                    <Link to={`/produtos`} style={{ color: "#FFF", marginLeft:"-10pxpx" }}>
                         Produtos
                     </Link>
                 </li>
                 <li>
-                    <Link to={`/usuarios`} style={{ color: "#FFF" }}>
+                    <Link to={`/usuarios`} style={{ color: "#FFF", marginLeft:"-10pxpx" }}>
                         Usuarios
                     </Link>
                 </li>
             </ul>
         </section>
         <section>
-            <img src="/imagens/Logos/univendas.png" alt="" />
-        </section>
-        <section>
-            <Link onClick={realizarLogout} to={"/auth/login"} style={{ color: "#FFF" }}>
+            <Link onClick={realizarLogout} to={"/auth/login"} style={{ color: "#FFF"}}>
                 Logout
             </Link>
         </section>
