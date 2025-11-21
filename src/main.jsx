@@ -22,10 +22,11 @@ createRoot(document.getElementById('root')).render(
         
         <Route path='/'>
           <Route path='cadastro-produto' element={<CadastroProduto />} />
-          <Route path='' element={ <Produtos/> }/>
+          <Route path='produtos' element={ <Produtos/> }/>
           <Route path='usuarios' element={ <Usuarios/> }/>
           <Route path='produto/:id' element={ <Produto/> }/>
           <Route path='usuario/:id' element={ <Usuario/> }/>
+          <Route path='/' element={<Login/>}/>
         </Route>
         
       </Routes>
