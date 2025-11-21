@@ -7,7 +7,7 @@ export const Login = () => {
     <>
         <Banner />
         <div>
-            <FormularioLogin aoFazerLogin={produto => console.log(produto)} href={"/cadastro-usuario"}/>
+            <FormularioLogin aoFazerLogin={produto => console.log(produto)} href={"/auth/cadastro-usuario"}/>
         </div>
         <BarraRodape />
     </>
