@@ -3,13 +3,12 @@ import { Formulario } from '../../componentes/Formulario/index.jsx'
 import { BarraRodape } from '../../componentes/BarraRodape/index.jsx'
 import api from '../../services/api.js'
 import { jwtDecode } from "jwt-decode"; 
-import { useNavigate, useLocation } from 'react-router-dom' // <--- Importe useLocation
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export const CadastroProduto = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // Hook para pegar os dados da navegação
-  
-  // Verifica se existe um produto passado pelo state do Link
+  const location = useLocation(); 
+
   const produtoParaEditar = location.state?.produtoParaEditar;
 
   const categorias = [
@@ -22,7 +21,7 @@ export const CadastroProduto = () => {
         const token = localStorage.getItem('token');
         if(!token) {
             alert("Você precisa estar logado!");
-            navigate('/auth/login');
+            navigate('/auth/login');  
             return;
         }
 
@@ -35,13 +34,12 @@ export const CadastroProduto = () => {
             amount: parseInt(produtoDoFormulario.quantidade),
             price: parseFloat(produtoDoFormulario.preco),
             imageUrl: produtoDoFormulario.imagem,
-            category: produtoDoFormulario.categoria, // Já deve vir em maiúsculo do form
+            category: produtoDoFormulario.categoria,
             soldById: userId
         };
 
         if (produtoParaEditar) {
             // --- MODO EDIÇÃO (PUT) ---
-            // Passamos o ID na URL
             await api.put(`/shop/${produtoParaEditar.id}`, payload);
             alert("Produto atualizado com sucesso!");
         } else {
@@ -71,7 +69,7 @@ export const CadastroProduto = () => {
         <Formulario 
             aoCadastrarProduto={salvarProduto} 
             categorias={categorias}
-            produtoEdicao={produtoParaEditar} // <--- Passamos o produto para o formulário
+            produtoEdicao={produtoParaEditar}
         />
         <BarraRodape />
       </div>

@@ -1,6 +1,6 @@
 import { CampoTexto } from '../CampoTexto'
 import { Botao } from '../Botao'
-import { useState, useEffect } from 'react' // Adicionar useEffect
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export const FormularioCadastroUsuario = (props) => {

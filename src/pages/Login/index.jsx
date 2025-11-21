@@ -1,7 +1,7 @@
 import { Banner } from "../../componentes/Banner/index.jsx"
 import { BarraRodape } from "../../componentes/BarraRodape/index.jsx"
 import { FormularioLogin } from "../../componentes/FormularioLogin/index.jsx"
-import api from "../../services/api" // Importamos a api configurada
+import api from "../../services/api" 
 import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
@@ -9,7 +9,6 @@ export const Login = () => {
 
     const realizarLogin = async (dados) => {
         try {
-            // Mapeando os dados para o formato que o Java espera (AuthenticationDataDto)
             const payload = {
                 email: dados.email,
                 password: dados.senha 
@@ -17,14 +16,12 @@ export const Login = () => {
 
             const resposta = await api.post('/login', payload);
 
-            // O Backend retorna { token: "..." }
             const token = resposta.data.token;
 
-            // Salvamos no armazenamento do navegador
             localStorage.setItem('token', token);
 
             alert('Login realizado com sucesso!');
-            navigate('/'); // Redireciona para a home (Produtos)
+            navigate('/'); 
 
         } catch (erro) {
             console.error("Erro ao logar:", erro);
@@ -36,7 +33,6 @@ export const Login = () => {
     <>
         <Banner />
         <div>
-            {/* Passamos a função realizarLogin para o componente */}
             <FormularioLogin aoFazerLogin={realizarLogin} href={"/auth/cadastro-usuario"}/>
         </div>
         <BarraRodape />
