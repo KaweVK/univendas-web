@@ -6,6 +6,8 @@ import { CadastroUsuario } from './pages/CadastroUsuario/index.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { Produtos } from './pages/Produtos/index.jsx'
 import { Produto } from './pages/Produto/index.jsx'
+import { Usuarios } from './pages/Usuarios/index.jsx'
+import { Usuario } from './pages/Usuario/index.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -20,8 +22,10 @@ createRoot(document.getElementById('root')).render(
         
         <Route path='/'>
           <Route path='cadastro-produto' element={<CadastroProduto />} />
-          <Route path='produtos' element={ <Produtos/> }/>
+          <Route path='' element={ <Produtos/> }/>
+          <Route path='usuarios' element={ <Usuarios/> }/>
           <Route path='produto/:id' element={ <Produto/> }/>
+          <Route path='usuario/:id' element={ <Usuario/> }/>
         </Route>
         
       </Routes>

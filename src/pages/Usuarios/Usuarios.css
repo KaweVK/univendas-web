@@ -1,0 +1,16 @@
+.lista-usuarios {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    flex-wrap: wrap;         
+    gap: 32px;               
+    padding: 40px;
+}
+
+.lista-usuarios h2 {
+    color: #4c054f;
+    margin-top: 20px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
