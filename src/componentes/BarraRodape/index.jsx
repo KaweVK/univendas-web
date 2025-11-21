@@ -27,7 +27,6 @@ export const BarraRodape = () => {
         <section>
             <p>
                 Desenvolvido por Victor Kawê. <br/>
-                Silas meu amor
             </p>
         </section>
     </footer>
