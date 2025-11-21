@@ -1,8 +1,8 @@
 import './FormularioLogin.css'
-import CampoTexto from '../CampoTexto'
-import Botao from '../Botao'
+import { CampoTexto } from '../CampoTexto'
+import { Botao } from '../Botao'
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export const FormularioLogin = (props) => {
 

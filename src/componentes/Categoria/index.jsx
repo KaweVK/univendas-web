@@ -1,4 +1,4 @@
-import CardProduto from "../CardProduto";
+import { CardProduto } from "../CardProduto";
 import "./Categoria.css";
 
 export const Categoria = (props) => {

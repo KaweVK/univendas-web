@@ -1,6 +1,6 @@
 import './BarraRodape.css'
 
-export const Rodape = () => {
+export const BarraRodape = () => {
     return (<footer className="rodape">
         <section>
             <ul>
