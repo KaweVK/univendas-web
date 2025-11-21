@@ -41,6 +41,7 @@ export const Usuario = () => {
 
             if (String(usuarioLogadoId) !== String(id)) {
                 alert("Você não pode excluir outro usuário!")
+                navigate("/usuarios")
                 return;
             }
 
