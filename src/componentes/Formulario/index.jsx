@@ -2,7 +2,7 @@ import './Formulario.css'
 import {CampoTexto} from '../CampoTexto'
 import {ListaSuspensa} from '../ListaSuspensa'
 import {Botao} from '../Botao'
-import { useState } from 'react'
+import { useState, useEffect } from 'react' 
 
 export const Formulario = (props) => {
 
@@ -12,6 +12,18 @@ export const Formulario = (props) => {
     const [preco, setPreco] = useState('') 
     const [categoria, setCategoria] = useState('')
     const [imagem, setImagem] = useState('') 
+
+  
+    useEffect(() => {
+        if (props.produtoEdicao) {
+            setNome(props.produtoEdicao.name || '');
+            setDescricao(props.produtoEdicao.description || '');
+            setQuantidade(props.produtoEdicao.amount || '');
+            setPreco(props.produtoEdicao.price || '');
+            setImagem(props.produtoEdicao.imageUrl || '');
+            setCategoria(props.produtoEdicao.category || '');
+        }
+    }, [props.produtoEdicao]);
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
@@ -23,25 +35,29 @@ export const Formulario = (props) => {
             imagem,
             categoria
         })
-        setNome('')
-        setDescricao('')
-        setQuantidade('')
-        setPreco('')
-        setImagem('')
-        setCategoria('')
+        if (!props.produtoEdicao) {
+            setNome('')
+            setDescricao('')
+            setQuantidade('')
+            setPreco('')
+            setImagem('')
+            setCategoria('')
+        }
     }
-
 
     return (
         <section className='formulario'>
             <form onSubmit={aoSalvar}>
-                <h2>Preencha os dados para criar seu produto</h2>
+                <h2>{props.produtoEdicao ? 'Editar Produto' : 'Preencha os dados para criar seu produto'}</h2>
+                
                 <CampoTexto 
                     obrigatorio={true} 
                     label='Nome' 
                     placeholder='Digite o nome do produto' 
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}/>
+                
+                
                 <CampoTexto 
                     obrigatorio={true} 
                     label='Descrição' 
@@ -72,11 +88,11 @@ export const Formulario = (props) => {
                     label='Categoria'
                     valor={categoria}
                     aoAlterado={valor => setCategoria(valor)}/>
+                
                 <Botao className={'botao-padrao'}>
-                    Cadastrar
+                    {props.produtoEdicao ? 'Salvar Alterações' : 'Cadastrar'}
                 </Botao>
             </form>
         </section>
     )
-
 }
