@@ -15,7 +15,7 @@ export const Produtos = () => {
             try {
                 const resposta = await api.get('/shop/all');
                 // Retorna Page, a lista em .content
-                setProdutos(resposta.data.content); 
+                setProdutos(resposta.data.content);
             } catch (error) {
                 console.error("Erro ao buscar produtos", error);
             }
@@ -31,12 +31,12 @@ export const Produtos = () => {
                 <h2>Produtos a venda</h2>
                 {produtos.length > 0 ? (
                     produtos.map(produto => (
-                        <Link to={`/produto/${produto.id}`} key={produto.id} style={{textDecoration: 'none'}}>
-                            <CardProduto 
-                                nome={produto.name}  
-                                descricao={produto.description} 
-                                img={produto.imageUrl || 'public/imagens/Logos/avatar.webp'} 
-                                corPrimaria={'#82CFFA'} 
+                        <Link to={`/produto/${produto.id}`} key={produto.id} style={{ textDecoration: 'none' }}>
+                            <CardProduto
+                                nome={produto.name}
+                                descricao={produto.description}
+                                img={produto.imageUrl || 'public/imagens/Logos/avatar.webp'}
+                                corPrimaria={'#82CFFA'}
                             />
                         </Link>
                     ))
@@ -44,9 +44,14 @@ export const Produtos = () => {
                     <p>Carregando produtos ou nenhum item encontrado...</p>
                 )}
             </div>
-            <Link to='/cadastro-produto'>
-                <Botao className="botao-padrao">Cadastrar Produto</Botao>
-            </Link>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
+                <Link to='/cadastro-produto'>
+                    <Botao className="botao-padrao">Cadastrar Produto</Botao>
+                </Link>
+                <Link to='/usuarios'>
+                    <Botao className="botao-padrao">Ver Usuarios</Botao>
+                </Link>
+            </div>
             <BarraRodape />
         </>
     )
