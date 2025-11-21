@@ -2,6 +2,7 @@ import './FormularioLogin.css'
 import CampoTexto from '../CampoTexto'
 import Botao from '../Botao'
 import { useState } from 'react'
+import { Link } from 'react-router'
 
 export const FormularioLogin = (props) => {
 
@@ -10,7 +11,7 @@ export const FormularioLogin = (props) => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        props.aoCadastrarProduto({
+        props.aoFazerLogin({
             email,
             senha
         })
@@ -37,7 +38,7 @@ export const FormularioLogin = (props) => {
                 <Botao>
                     Login
                 </Botao>
-                <a href="">Cadastrar-se</a>
+                <Link to={props.href}>Cadastrar-se</Link>
             </form>
         </section>
     )
