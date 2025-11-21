@@ -1,0 +1,16 @@
+.detalhe-produto{
+    background-color: #f4f4f4;
+    padding: 40px;
+    text-align: center;
+    width: auto;
+}
+
+.detalhe-produto h1{
+    color: #6278F7;
+}
+
+.detalhe-produto img{
+    margin: 20px 0;
+    width: 300px;
+    height: auto;
+}
