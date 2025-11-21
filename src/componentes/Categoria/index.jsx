@@ -1,7 +1,7 @@
 import CardProduto from "../CardProduto";
 import "./Categoria.css";
 
-const Categoria = (props) => {
+export const Categoria = (props) => {
 
     const cssSection = {backgroundColor: props.corSecundaria}
 
@@ -16,5 +16,3 @@ const Categoria = (props) => {
         </section>
     )
 }
-
-export default Categoria;

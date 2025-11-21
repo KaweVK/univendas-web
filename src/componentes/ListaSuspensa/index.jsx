@@ -1,6 +1,6 @@
 import './ListaSuspensa.css'
 
-const ListaSuspensa = (props) => {
+export const ListaSuspensa = (props) => {
     return (
         <div className='lista-suspensa'>
             <label>{props.label}</label>
@@ -11,5 +11,3 @@ const ListaSuspensa = (props) => {
         </div>
     )    
 }
-
-export default ListaSuspensa

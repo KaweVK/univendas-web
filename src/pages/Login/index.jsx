@@ -1,6 +1,6 @@
-import Banner from "../../componentes/Banner"
-import BarraRodape from "../../componentes/BarraRodape"
-import{ FormularioLogin }from "../../componentes/FormularioLogin/index.jsx"
+import { Banner } from "../../componentes/Banner/index.jsx"
+import { BarraRodape } from "../../componentes/BarraRodape/index.jsx"
+import { FormularioLogin } from "../../componentes/FormularioLogin/index.jsx"
 
 export const Login = () => {
     return (

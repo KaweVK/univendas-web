@@ -1,6 +1,6 @@
 import './BarraRodape.css'
 
-const Rodape = () => {
+export const Rodape = () => {
     return (<footer className="rodape">
         <section>
             <ul>
@@ -30,7 +30,6 @@ const Rodape = () => {
                 Silas meu amor
             </p>
         </section>
-    </footer>)
+    </footer>
+    )
 }
-
-export default Rodape

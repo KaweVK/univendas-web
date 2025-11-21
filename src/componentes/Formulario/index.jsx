@@ -4,7 +4,7 @@ import ListaSuspensa from '../ListaSuspensa'
 import Botao from '../Botao'
 import { useState } from 'react'
 
-const Formulario = (props) => {
+export const Formulario = (props) => {
 
     const [nome, setNome] = useState('') 
     const [descricao, setDescricao] = useState('') 
@@ -80,5 +80,3 @@ const Formulario = (props) => {
     )
 
 }
-
-export default Formulario

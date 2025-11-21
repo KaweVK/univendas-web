@@ -1,7 +1,7 @@
 import './CardProduto.css';
 
 
-const CardProduto = ({img, nome, descricao, corPrimaria}) => {
+export const CardProduto = ({img, nome, descricao, corPrimaria}) => {
 
     const css = {
         backgroundColor: corPrimaria
@@ -19,5 +19,3 @@ const CardProduto = ({img, nome, descricao, corPrimaria}) => {
         </div>
     )
 }
-
-export default CardProduto;
