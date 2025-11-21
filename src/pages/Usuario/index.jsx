@@ -6,6 +6,7 @@ import { DetalheUsuario } from '../../componentes/DetalheUsuario/index.jsx';
 import { Botao } from '../../componentes/Botao/index.jsx';
 import api from '../../services/api.js';
 import './Usuario.css';
+import { jwtDecode } from 'jwt-decode';
 
 export const Usuario = () => {
     const { id } = useParams();
@@ -28,14 +29,32 @@ export const Usuario = () => {
 
     const excluirUsuario = async () => {
         if (window.confirm(`Tem certeza que deseja excluir o usuário ${usuario.name}?`)) {
-            if (usuario.id !== id) {
-                alert("Você não pode excluir o perfil de outro usuário")
+
+            const token = localStorage.getItem('token');
+            let usuarioLogadoId = null;
+
+            if (token) {
+                const decoded = jwtDecode(token);
+                usuarioLogadoId = decoded.id;
+            }
+
+            if (String(usuarioLogadoId) !== String(id)) {
+                alert("Você não pode excluir outro usuário!")
                 return;
             }
+
             try {
                 await api.delete(`/users/${id}`);
-                alert("Usuário excluído com sucesso!");
-                navigate('/usuarios');
+
+                if (String(usuarioLogadoId) === String(id)) {
+                    alert("Sua conta foi excluída. Você será desconectado.");
+                    localStorage.removeItem('token');
+                    navigate('/auth/login');
+                } else {
+                    alert("Usuário excluído com sucesso!");
+                    navigate('/usuarios');
+                }
+
             } catch (erro) {
                 console.error("Erro ao excluir:", erro);
                 alert("Erro ao excluir usuário. Verifique permissões.");
@@ -50,20 +69,20 @@ export const Usuario = () => {
     return (
         <>
             <Banner />
-            <DetalheUsuario 
+            <DetalheUsuario
                 id={usuario.id}
-                nome={usuario.name} 
-                email={usuario.email} 
-                telefone={usuario.phoneNumber} 
-                cidade={usuario.city} 
+                nome={usuario.name}
+                email={usuario.email}
+                telefone={usuario.phoneNumber}
+                cidade={usuario.city}
                 img={usuario.imageUrl || '../../../public/imagens/Logos/avatar.webp'}
             />
-            
+
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
                 <Link to='/auth/cadastro-usuario' state={{ usuarioParaEditar: usuario }}>
                     <Botao className={'botao-padrao'}>Editar Perfil</Botao>
                 </Link>
-                
+
                 <div onClick={excluirUsuario}>
                     <Botao className={'botao-excluir'}>Excluir Conta</Botao>
                 </div>
