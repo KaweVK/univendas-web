@@ -1,10 +1,10 @@
 import './CardUsuario.css';
 
-export const CardUsuario = ({ nome, email, cidade }) => {
+export const CardUsuario = ({ nome, email, cidade, img}) => {
     return (
         <div className='cardUsuario'>
             <div className='cabecalho'>
-                <img src="/imagens/Banner/univendas_logo.png" alt="Avatar" /> 
+                <img src={img} alt="Avatar" /> 
             </div>
             <div className='rodape'>
                 <h4>{nome}</h4>

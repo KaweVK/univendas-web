@@ -32,7 +32,8 @@ export const Usuarios = () => {
                             <CardUsuario 
                                 nome={usuario.name} 
                                 email={usuario.email} 
-                                cidade={usuario.city} 
+                                cidade={usuario.city}   
+                                img={usuario.imageUrl || '../../../public/imagens/Logos/avatar.webp'}
                             />
                         </Link>
                     ))

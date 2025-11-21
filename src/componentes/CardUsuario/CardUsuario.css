@@ -1,6 +1,7 @@
 .cardUsuario {
     width: 280px;
     margin: 20px;
+    height: auto;
 }
 .cardUsuario .cabecalho {
     background-color: #6A2C70;
@@ -18,6 +19,7 @@
     position: relative;
     bottom: -40px;
 }
+
 .cardUsuario .rodape {
     background: #FFFFFF;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
@@ -30,4 +32,11 @@
     color: #6A2C70;
     font-size: 22px;
     font-weight: bold;
+    text-align: center;
+}
+.cardUsuario .rodape h4 {
+    color: #6A2C70;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
 }
