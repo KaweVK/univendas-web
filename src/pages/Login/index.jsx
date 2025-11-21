@@ -21,7 +21,7 @@ export const Login = () => {
             localStorage.setItem('token', token);
 
             alert('Login realizado com sucesso!');
-            navigate('/'); 
+            navigate('/produtos'); 
 
         } catch (erro) {
             console.error("Erro ao logar:", erro);
