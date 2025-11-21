@@ -28,6 +28,10 @@ export const Usuario = () => {
 
     const excluirUsuario = async () => {
         if (window.confirm(`Tem certeza que deseja excluir o usuário ${usuario.name}?`)) {
+            if (usuario.id !== id) {
+                alert("Você não pode excluir o perfil de outro usuário")
+                return;
+            }
             try {
                 await api.delete(`/users/${id}`);
                 alert("Usuário excluído com sucesso!");
@@ -52,7 +56,7 @@ export const Usuario = () => {
                 email={usuario.email} 
                 telefone={usuario.phoneNumber} 
                 cidade={usuario.city} 
-                img={usuario.imageUrl || 'https://github.com/kawevk.png'}
+                img={usuario.imageUrl || '../../../public/imagens/Logos/avatar.webp'}
             />
             
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
@@ -63,6 +67,10 @@ export const Usuario = () => {
                 <div onClick={excluirUsuario}>
                     <Botao className={'botao-excluir'}>Excluir Conta</Botao>
                 </div>
+
+                <Link to='/usuarios' state={{ usuarioParaEditar: usuario }}>
+                    <Botao className={'botao-padrao'}>Voltar</Botao>
+                </Link>
             </div>
             <BarraRodape />
         </>
