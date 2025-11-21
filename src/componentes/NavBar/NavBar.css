@@ -1,0 +1,32 @@
+.bar {
+    background: #47104A;
+    color: #FFF;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.bar ul li {
+    display: inline-block;
+    margin-right: 40px;
+    width: 25px;
+    height: 25px;
+}
+
+.bar section p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.bar section img {
+    width: 29px;
+    height: auto;
+}
+
+Link {
+    color: #FFF;
+}
