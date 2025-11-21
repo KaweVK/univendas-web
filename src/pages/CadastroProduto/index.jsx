@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Banner from '../../componentes/Banner/'
-import Formulario from '../../componentes/Formulario'
-import Categoria from '../../componentes/Categoria'
-import BarraRodape from '../../componentes/BarraRodape'
+import { Banner } from '../../componentes/Banner/index.jsx'
+import { Formulario } from '../../componentes/Formulario/index.jsx'
+import { Categoria } from '../../componentes/Categoria/index.jsx'
+import { BarraRodape } from '../../componentes/BarraRodape/index.jsx'
 
 export const CadastroProduto = () => {
   const categorias = [

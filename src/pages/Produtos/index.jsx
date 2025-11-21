@@ -1,9 +1,9 @@
-import Banner from '../../componentes/Banner'
-import BarraRodape from '../../componentes/BarraRodape'
-import CardProduto from '../../componentes/CardProduto'
+import {Banner} from '../../componentes/Banner/index.jsx'
+import {BarraRodape} from '../../componentes/BarraRodape/index.jsx'
+import {CardProduto} from '../../componentes/CardProduto/index.jsx'
 import { Link } from 'react-router'
 import './Produtos.css'
-import Botao from '../../componentes/Botao'
+import {Botao} from '../../componentes/Botao/index.jsx'
 
 export const Produtos = () => {
     const produtos = [
