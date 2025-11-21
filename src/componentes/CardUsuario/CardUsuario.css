@@ -1,0 +1,33 @@
+.cardUsuario {
+    width: 280px;
+    margin: 20px;
+}
+.cardUsuario .cabecalho {
+    background-color: #6A2C70;
+    border-radius: 10px 10px 0px 0px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.cardUsuario img {
+    width: 80px;
+    border-radius: 50%;
+    background: white;
+    padding: 5px;
+    position: relative;
+    bottom: -40px;
+}
+.cardUsuario .rodape {
+    background: #FFFFFF;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.cardUsuario .rodape h4 {
+    color: #6A2C70;
+    font-size: 22px;
+    font-weight: bold;
+}
