@@ -61,7 +61,7 @@ export const FormularioCadastroUsuario = (props) => {
                     placeholder='Digite a cidade de residência'
                     valor={numero}
                     aoAlterado={valor => setNumero(valor)} />
-                <Botao>
+                <Botao className={'botao-padrao'}>
                     Cadastrar
                 </Botao>
                 <Link to={props.href}>Já tenho conta</Link>

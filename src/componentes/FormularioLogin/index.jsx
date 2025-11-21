@@ -35,7 +35,7 @@ export const FormularioLogin = (props) => {
                     placeholder='Digite a sua senha'
                     valor={senha}
                     aoAlterado={valor => setSenha(valor)}/>
-                <Botao>
+                <Botao className={'botao-padrao'}>
                     Login
                 </Botao>
                 <Link to={props.href}>Cadastrar-se</Link>

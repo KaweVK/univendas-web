@@ -72,7 +72,7 @@ export const Formulario = (props) => {
                     label='Categoria'
                     valor={categoria}
                     aoAlterado={valor => setCategoria(valor)}/>
-                <Botao>
+                <Botao className={'botao-padrao'}>
                     Cadastrar
                 </Botao>
             </form>

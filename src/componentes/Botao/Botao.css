@@ -1,4 +1,4 @@
-.botao {
+.botao-padrao {
     background-color: #4c054f;
     border-radius: 10px;
     font-weight: 700;
@@ -10,6 +10,22 @@
     margin: 32px 0;
 }
 
-.botao:hover {
+.botao-padrao:hover {
     background-color: #380b38;
+}
+
+.botao-excluir {
+    background-color: #a60202;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 32px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin: 32px 0;
+}
+
+.botao-excluir:hover {
+    background-color: #4f0505;
 }
