@@ -13,9 +13,10 @@ export const Usuarios = () => {
         const buscarUsuarios = async () => {
             try {
                 const resposta = await api.get('/users/search');
-                setUsuarios(resposta.data.content);
+                setUsuarios(resposta.data.content || []);
             } catch (error) {
                 console.error("Erro ao buscar usuários:", error);
+                setUsuarios([])
             }
         }
         buscarUsuarios();
