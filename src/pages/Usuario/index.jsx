@@ -14,10 +14,10 @@ export const Usuario = () => {
         <>
             <Banner />
             <DetalheUsuario nome={usuario.nome} email={usuario.email} telefone={usuario.telefone} cidade={usuario.cidade} img={usuario.img}/>
-            <Link to='/cadastro-usuario'>
+            <Link to='/auth/cadastro-usuario'>
                 <Botao className={'botao-padrao'}>Editar Usuario</Botao>
             </Link>
-            <Link to='/cadastro-usuario'>
+            <Link to='/auth/cadastro-usuario'>
                 <Botao className={'botao-excluir'}>Excluir Usuario</Botao>
             </Link>
             <BarraRodape />
