@@ -3,6 +3,7 @@ import BarraRodape from '../../componentes/BarraRodape'
 import CardProduto from '../../componentes/CardProduto'
 import { Link } from 'react-router'
 import './Produtos.css'
+import Botao from '../../componentes/Botao'
 
 export const Produtos = () => {
     const produtos = [
@@ -26,6 +27,9 @@ export const Produtos = () => {
                     </Link>
                 ))}
             </div>
+            <Link to='/cadastro-produto'>
+                <Botao>Cadastrar Produto</Botao>
+            </Link>
             <BarraRodape />
         </>
     )
