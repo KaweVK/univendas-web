@@ -59,8 +59,8 @@ export const FormularioCadastroUsuario = (props) => {
                     obrigatorio={true}
                     label='Cidade'
                     placeholder='Digite a cidade de residência'
-                    valor={numero}
-                    aoAlterado={valor => setNumero(valor)} />
+                    valor={cidade}
+                    aoAlterado={valor => setCidade(valor)} />
                 <Botao className={'botao-padrao'}>
                     Cadastrar
                 </Botao>
