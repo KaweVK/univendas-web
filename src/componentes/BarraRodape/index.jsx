@@ -26,7 +26,7 @@ export const BarraRodape = () => {
         </section>
         <section>
             <p>
-                Desenvolvido por Victor Kawê. <br/>
+                Desenvolvido por <br /> Victor Kawê. <br/>
             </p>
         </section>
     </footer>
