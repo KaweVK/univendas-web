@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Banner } from '../../componentes/Banner/index.jsx';
 import { BarraRodape } from '../../componentes/BarraRodape/index.jsx';
 import { DetalheUsuario } from '../../componentes/DetalheUsuario/index.jsx';
 import { Botao } from '../../componentes/Botao/index.jsx';
