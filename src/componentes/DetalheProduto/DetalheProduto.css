@@ -1,5 +1,4 @@
 .detalhe-produto{
-    background-color: #f4f4f4;
     padding: 40px;
     text-align: center;
     width: auto;
@@ -10,7 +9,8 @@
 }
 
 .detalhe-produto img{
-    margin: 20px 0;
+    display: block;
+    margin: 20px auto;
     width: 300px;
     height: auto;
 }

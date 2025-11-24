@@ -9,7 +9,8 @@
 }
 
 .detalhe-usuario img{
-    margin: 20px 0;
+    display: block;
+    margin: 20px auto;
     width: 300px;
     height: auto;
 }
