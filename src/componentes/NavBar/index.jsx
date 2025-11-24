@@ -62,15 +62,6 @@ export const NavBar = () => {
         >
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
-                    <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        {/* Mobile menu button*/}
-                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
-                            <span className="absolute -inset-0.5" />
-                            <span className="sr-only">Menu</span>
-                            <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
-                            <XMarkIcon aria-hidden="true" className="hidden size-6 group-data-open:block" />
-                        </DisclosureButton>
-                    </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex shrink-0 items-center">
                             <img

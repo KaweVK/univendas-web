@@ -8,7 +8,7 @@ export const CardUsuario = ({ nome, email, cidade, img}) => {
             </div>
             <div className='rodape'>
                 <h4>{nome}</h4>
-                <h5>{email}</h5>
+                <p>{email}</p>
                 <p>{cidade}</p>
             </div>
         </div>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Banner } from '../../componentes/Banner/index.jsx'
 import { BarraRodape } from '../../componentes/BarraRodape/index.jsx'
 import { CardProduto } from '../../componentes/CardProduto/index.jsx'
 import { Link } from 'react-router-dom'
