@@ -67,6 +67,24 @@ export const Usuario = () => {
         return <div>Carregando...</div>
     }
 
+    const verificarEdição = async () => {
+        const token = localStorage.getItem('token');
+        let usuarioLogadoId = null;
+
+        if (token) {
+            const decoded = jwtDecode(token);
+            usuarioLogadoId = decoded.id;
+        }
+
+        if (String(usuarioLogadoId) !== String(usuario.id)) {
+            alert("Você não pode editar outro usuário!")
+            navigate("/usuarios")
+            return;
+        }
+
+        navigate("/auth/cadastro-usuario", {state: { usuarioParaEditar: usuario }})
+    }
+
     return (
         <>
             <NavBar />
@@ -80,15 +98,15 @@ export const Usuario = () => {
             />
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
-                <Link to='/auth/cadastro-usuario' state={{ usuarioParaEditar: usuario }}>
+                <div onClick={verificarEdição}>
                     <Botao className={'botao-padrao'}>Editar Perfil</Botao>
-                </Link>
+                </div>
 
                 <div onClick={excluirUsuario}>
                     <Botao className={'botao-excluir'}>Excluir Conta</Botao>
                 </div>
 
-                <Link to='/usuarios' state={{ usuarioParaEditar: usuario }}>
+                <Link to='/usuarios'>
                     <Botao className={'botao-padrao'}>Voltar</Botao>
                 </Link>
             </div>
