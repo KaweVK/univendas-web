@@ -47,9 +47,6 @@ export const Usuarios = () => {
                 <Link to='/cadastro-produto'>
                     <Botao className="botao-padrao">Cadastrar Produto</Botao>
                 </Link>
-                <Link to='/usuarios'>
-                    <Botao className="botao-padrao">Ver Usuarios</Botao>
-                </Link>
             </div>
             <BarraRodape />
         </>
