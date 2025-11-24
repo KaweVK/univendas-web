@@ -28,22 +28,21 @@ export const Usuario = () => {
     }, [id, navigate]);
 
     const excluirUsuario = async () => {
+        const token = localStorage.getItem('token');
+        let usuarioLogadoId = null;
+
+        if (token) {
+            const decoded = jwtDecode(token);
+            usuarioLogadoId = decoded.id;
+        }
+
+        if (String(usuarioLogadoId) !== String(id)) {
+            alert("Você não pode excluir outro usuário!")
+            navigate(`/usuario/${id}`)
+            return;
+        }
+
         if (window.confirm(`Tem certeza que deseja excluir o usuário ${usuario.name}?`)) {
-
-            const token = localStorage.getItem('token');
-            let usuarioLogadoId = null;
-
-            if (token) {
-                const decoded = jwtDecode(token);
-                usuarioLogadoId = decoded.id;
-            }
-
-            if (String(usuarioLogadoId) !== String(id)) {
-                alert("Você não pode excluir outro usuário!")
-                navigate("/usuarios")
-                return;
-            }
-
             try {
                 await api.delete(`/users/${id}`);
 
@@ -51,9 +50,6 @@ export const Usuario = () => {
                     alert("Sua conta foi excluída. Você será desconectado.");
                     localStorage.removeItem('token');
                     navigate('/auth/login');
-                } else {
-                    alert("Usuário excluído com sucesso!");
-                    navigate('/usuarios');
                 }
 
             } catch (erro) {
@@ -78,11 +74,11 @@ export const Usuario = () => {
 
         if (String(usuarioLogadoId) !== String(usuario.id)) {
             alert("Você não pode editar outro usuário!")
-            navigate("/usuarios")
+            navigate(`/usuario/${id}`)
             return;
         }
 
-        navigate("/auth/cadastro-usuario", {state: { usuarioParaEditar: usuario }})
+        navigate("/auth/cadastro-usuario", { state: { usuarioParaEditar: usuario } })
     }
 
     return (
