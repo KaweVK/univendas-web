@@ -29,3 +29,19 @@
 .botao-excluir:hover {
     background-color: #4f0505;
 }
+
+.botao-whatsapp {
+    background-color: #10a602;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 32px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin: 32px 0;
+}
+
+.botao-whatsapp:hover {
+    background-color: #096900;
+}
