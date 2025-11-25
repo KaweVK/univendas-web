@@ -46,7 +46,7 @@ export const Usuario = () => {
             };
 
         }
-    }, [usuario]);
+    }, [id, token, usuarioLogadoId, usuario]);
 
     const excluirUsuario = async () => {
         if (!eDono) {
