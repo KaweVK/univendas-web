@@ -12,6 +12,7 @@ export const Produto = () => {
     const navigate = useNavigate();
     const [produto, setProduto] = useState(null);
     const [usuario, setUsuario] = useState(null);
+    const [eDono, setEDono] = useState(false);
 
     useEffect(() => {
         const carregarProduto = async () => {
@@ -45,19 +46,30 @@ export const Produto = () => {
         }
     }, [produto]);
 
-    const excluirProduto = async () => {
-        const token = localStorage.getItem('token');
-        let usuarioLogadoId = null;
+    useEffect(() => {
+        if (produto) {
+            const token = localStorage.getItem('token');
+            if (token) {
+                try {
+                    const decoded = jwtDecode(token);
+                    const usuarioLogadoId = String(decoded.id);
+                    const idVendedor = String(produto.soldById);
 
-        if (token) {
-            const decoded = jwtDecode(token);
-            usuarioLogadoId = decoded.id;
+                    // eslint-disable-next-line react-hooks/set-state-in-effect
+                    setEDono(usuarioLogadoId === idVendedor);
+                } catch (erro) {
+                    console.error("Erro ao decodificar token", erro);
+                    setEDono(false);
+                }
+            };
+            
         }
+    }, [produto]);
 
-        if (String(usuarioLogadoId) !== String(produto.soldById)) {
+    const excluirProduto = async () => {
+        if (!eDono) {
             alert("Você não pode excluir um produto de outro usuário!")
-            navigate(`/produto/${id}`) //erro
-            return;
+            navigate(`/produto/${id}`)
         }
 
         if (window.confirm("Tem certeza que deseja excluir este produto?")) {
@@ -84,25 +96,13 @@ export const Produto = () => {
     }
 
     const verificarEdição = async () => {
-        const token = localStorage.getItem('token');
-        let usuarioLogadoId = null;
-
-        if (token) {
-            const decoded = jwtDecode(token);
-            usuarioLogadoId = decoded.id;
-        }
-
-        const idVendedor = produto.soldById
-
-        if (String(usuarioLogadoId) !== String(idVendedor)) {
+        if (!eDono) {
             alert("Você não pode editar o produto de outro usuário!")
             navigate(`/produto/${id}`)
-            return;
         }
 
         navigate("/cadastro-produto", { state: { produtoParaEditar: produto } })
     }
-
 
     return (
         <>
@@ -115,19 +115,26 @@ export const Produto = () => {
             />
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-                <div onClick={verificarEdição}>
-                    <Botao className={'botao-padrao'}>Editar Produto</Botao>
-                </div>
+                {eDono &&
+                    (<div onClick={verificarEdição}>
+                        <Botao className={'botao-padrao'}>Editar Produto</Botao>
+                    </div>
+                    )
+                }
 
-                <div onClick={excluirProduto}>
-                    <Botao className={'botao-excluir'}>Excluir Produto</Botao>
-                </div>
+                {eDono &&
+                    (<div onClick={excluirProduto}>
+                        <Botao className={'botao-excluir'}>Excluir Produto</Botao>
+                    </div>
+                    )
+                }
 
                 {usuario &&
                     (<Link to={`https://wa.me/${usuario.phoneNumber}`} target='_blank'>
                         <Botao className={'botao-whatsapp'}>Entrar em contato</Botao>
                     </Link>
-                )}
+                    )
+                }
 
                 <Link to='/produtos'>
                     <Botao className={'botao-padrao'}>Voltar</Botao>

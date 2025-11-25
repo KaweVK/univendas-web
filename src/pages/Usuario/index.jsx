@@ -12,6 +12,10 @@ export const Usuario = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState(null);
+    const [eDono, setEDono] = useState(false);
+    const token = localStorage.getItem('token');
+    const decoded = jwtDecode(token);
+    const usuarioLogadoId = String(decoded.id);
 
     useEffect(() => {
         const carregarUsuario = async () => {
@@ -27,16 +31,25 @@ export const Usuario = () => {
         carregarUsuario();
     }, [id, navigate]);
 
-    const excluirUsuario = async () => {
-        const token = localStorage.getItem('token');
-        let usuarioLogadoId = null;
+    useEffect(() => {
+        if (usuario) {
+            if (token) {
+                try {
+                    const idPerfil = String(id);
 
-        if (token) {
-            const decoded = jwtDecode(token);
-            usuarioLogadoId = decoded.id;
+                    // eslint-disable-next-line react-hooks/set-state-in-effect
+                    setEDono(usuarioLogadoId === idPerfil);
+                } catch (erro) {
+                    console.error("Erro ao decodificar token", erro);
+                    setEDono(false);
+                }
+            };
+
         }
+    }, [usuario]);
 
-        if (String(usuarioLogadoId) !== String(id)) {
+    const excluirUsuario = async () => {
+        if (!eDono) {
             alert("Você não pode excluir outro usuário!")
             navigate(`/usuario/${id}`)
             return;
@@ -64,12 +77,10 @@ export const Usuario = () => {
     }
 
     const verificarEdição = async () => {
-        const token = localStorage.getItem('token');
-        let usuarioLogadoId = null;
-
-        if (token) {
-            const decoded = jwtDecode(token);
-            usuarioLogadoId = decoded.id;
+        if (!eDono) {
+            alert("Você não pode editar outro usuário!")
+            navigate(`/usuario/${id}`)
+            return;
         }
 
         if (String(usuarioLogadoId) !== String(usuario.id)) {
@@ -94,13 +105,19 @@ export const Usuario = () => {
             />
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
-                <div onClick={verificarEdição}>
-                    <Botao className={'botao-padrao'}>Editar Perfil</Botao>
-                </div>
+                {eDono &&
+                    (<div onClick={verificarEdição}>
+                        <Botao className={'botao-padrao'}>Editar Perfil</Botao>
+                    </div>
+                    )
+                }
 
-                <div onClick={excluirUsuario}>
-                    <Botao className={'botao-excluir'}>Excluir Conta</Botao>
-                </div>
+                {eDono &&
+                    (<div onClick={excluirUsuario}>
+                        <Botao className={'botao-excluir'}>Excluir Conta</Botao>
+                    </div>
+                    )
+                }
 
                 <Link to='/usuarios'>
                     <Botao className={'botao-padrao'}>Voltar</Botao>
