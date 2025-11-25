@@ -11,6 +11,7 @@ export const Produto = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [produto, setProduto] = useState(null);
+    const [usuario, setUsuario] = useState(null);
 
     useEffect(() => {
         const carregarProduto = async () => {
@@ -20,11 +21,29 @@ export const Produto = () => {
             } catch (erro) {
                 console.error("Erro ao buscar produto:", erro);
                 alert("Erro ao carregar o produto!");
-                navigate('/');
+                navigate('/produtos');
             }
         };
         carregarProduto();
+
     }, [id, navigate]);
+
+    useEffect(() => {
+        if (produto) {
+            const carregarUsuario = async () => {
+                const idVendedor = produto.soldById
+
+                try {
+                    const resposta = await api.get(`/users/${idVendedor}`);
+                    setUsuario(resposta.data);
+                } catch (erro) {
+                    console.error("Erro ao buscar usuario:", erro);
+                    alert("Erro ao carregar o usuario!");
+                }
+            };
+            carregarUsuario();
+        }
+    }, [produto]);
 
     const excluirProduto = async () => {
         const token = localStorage.getItem('token');
@@ -35,9 +54,9 @@ export const Produto = () => {
             usuarioLogadoId = decoded.id;
         }
 
-        if (String(usuarioLogadoId) !== String(id)) {
+        if (String(usuarioLogadoId) !== String(produto.soldById)) {
             alert("Você não pode excluir um produto de outro usuário!")
-            navigate(`/produto/${id}`)
+            navigate(`/produto/${id}`) //erro
             return;
         }
 
@@ -73,7 +92,7 @@ export const Produto = () => {
             usuarioLogadoId = decoded.id;
         }
 
-        const idVendedor = produto.soldBy
+        const idVendedor = produto.soldById
 
         if (String(usuarioLogadoId) !== String(idVendedor)) {
             alert("Você não pode editar o produto de outro usuário!")
@@ -103,6 +122,12 @@ export const Produto = () => {
                 <div onClick={excluirProduto}>
                     <Botao className={'botao-excluir'}>Excluir Produto</Botao>
                 </div>
+
+                {usuario &&
+                    (<Link to={`https://wa.me/${usuario.phoneNumber}`} target='_blank'>
+                        <Botao className={'botao-whatsapp'}>Entrar em contato</Botao>
+                    </Link>
+                )}
 
                 <Link to='/produtos'>
                     <Botao className={'botao-padrao'}>Voltar</Botao>
