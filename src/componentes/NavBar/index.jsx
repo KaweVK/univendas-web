@@ -46,9 +46,10 @@ export const NavBar = () => {
     ]
 
     const realizarLogout = () => {
-        window.confirm("Deseja realmente sair?")
-        localStorage.removeItem('token');
+        if(window.confirm("Deseja realmente sair?")){
+            localStorage.removeItem('token');
         navigate('/auth/login');
+        }
     }
 
     const perfil = () => {
