@@ -4,7 +4,7 @@ import { BarraRodape } from '../../componentes/BarraRodape/index.jsx'
 import { CardUsuario } from '../../componentes/CardUsuario/index.jsx'
 import { Link } from 'react-router-dom'
 import api from '../../services/api.js'
-import './usuarios.css'
+import './Usuarios.css'
 import { NavBar } from '../../componentes/NavBar/index.jsx'
 
 export const Usuarios = () => {
