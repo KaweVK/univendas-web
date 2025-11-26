@@ -2,7 +2,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import "./NavBar.css"
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import api from '../../services/api.js';
 import { jwtDecode } from 'jwt-decode';
 
@@ -41,8 +41,8 @@ export const NavBar = () => {
 
 
     const navigation = [
-        { name: 'Produtos', href: 'https://univendas.onrender.com/produtos', current: location.pathname === '/produtos' },
-        { name: 'Usuários', href: 'https://univendas.onrender.com/usuarios', current: location.pathname === '/usuarios' },
+        { name: 'Produtos', href: '/produtos', current: location.pathname === '/produtos' },
+        { name: 'Usuários', href: '/usuarios', current: location.pathname === '/usuarios' },
     ]
 
     const realizarLogout = () => {
@@ -74,9 +74,9 @@ export const NavBar = () => {
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
                                 {navigation.map((item) => (
-                                    <a
+                                    <Link
                                         key={item.name}
-                                        href={item.href}
+                                        to={item.href}
                                         aria-current={item.current ? 'page' : undefined}
                                         className={classNames(
                                             item.current ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white',
@@ -84,7 +84,7 @@ export const NavBar = () => {
                                         )}
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
