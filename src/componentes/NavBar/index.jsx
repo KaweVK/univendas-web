@@ -41,8 +41,8 @@ export const NavBar = () => {
 
 
     const navigation = [
-        { name: 'Produtos', href: 'https://univendas.onrender.com//produtos', current: location.pathname === '/produtos' },
-        { name: 'Usuários', href: 'https://univendas.onrender.com//usuarios', current: location.pathname === '/usuarios' },
+        { name: 'Produtos', href: 'https://univendas.onrender.com/produtos', current: location.pathname === '/produtos' },
+        { name: 'Usuários', href: 'https://univendas.onrender.com/usuarios', current: location.pathname === '/usuarios' },
     ]
 
     const realizarLogout = () => {
