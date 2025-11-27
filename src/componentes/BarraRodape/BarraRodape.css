@@ -52,3 +52,15 @@
     width: 35px;
     height: auto;
 }
+
+@media (max-width: 768px) {
+    .rodape {
+        flex-direction: column; /* Coloca um item debaixo do outro */
+        gap: 24px; /* Espaço entre as secções */
+        text-align: center;
+    }
+
+    .rodape ul li {
+        margin: 0 12px; /* Aumenta o espaço entre os ícones sociais para facilitar o toque */
+    }
+}

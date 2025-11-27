@@ -43,3 +43,19 @@
     justify-content: center;
     align-items: center;
 }
+
+/* Responsividade para Ecrãs Menores (Tablets e Telemóveis) */
+@media (max-width: 768px) {
+    .formulario {
+        margin: 40px 0; /* Menos margem vertical */
+    }
+
+    .formulario form {
+        max-width: 90%; /* Ocupa quase toda a largura */
+        padding: 24px; /* Reduz o padding interno */
+    }
+
+    .formulario form h2 {
+        font-size: 24px; /* Título ligeiramente menor */
+    }
+}

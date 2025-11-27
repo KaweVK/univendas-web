@@ -41,3 +41,27 @@
 .detalhe-usuario strong {
     color: #47104A;
 }
+
+@media (max-width: 768px) {
+    .detalhe-produto, .detalhe-usuario {
+        padding: 20px; /* Espaçamento mais confortável */
+    }
+
+    .detalhe-produto h1, .detalhe-usuario h1 {
+        font-size: 28px; /* Fonte mais adequada para mobile */
+    }
+
+    .detalhe-produto img, .detalhe-usuario img {
+        width: 100%; /* A imagem adapta-se à largura disponível */
+        max-width: 250px; /* Mas não cresce infinitamente */
+        height: auto; /* Mantém a proporção correta */
+    }
+
+    .detalhe-produto h3 {
+        font-size: 30px;
+    }
+    
+    .detalhe-produto p, .detalhe-usuario p, .detalhe-usuario h2 {
+        font-size: 16px; /* Texto de leitura mais legível */
+    }
+}
