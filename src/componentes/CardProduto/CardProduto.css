@@ -1,6 +1,6 @@
 .cardProduto {
     width: 280px;
-    height: 400px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
