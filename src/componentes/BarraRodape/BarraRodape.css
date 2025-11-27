@@ -13,7 +13,7 @@
 }
 
 .rodape {
-    background: #47104A;
+    background: #47104C;
     color: #FFF;
     padding: 20px;
     display: flex;
@@ -49,6 +49,6 @@
 }
 
 .rodape section img {
-    width: 29px;
+    width: 35px;
     height: auto;
 }
