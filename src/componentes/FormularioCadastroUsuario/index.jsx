@@ -68,7 +68,8 @@ export const FormularioCadastroUsuario = (props) => {
                     label='Senha'
                     placeholder='Digite a sua senha'
                     valor={senha}
-                    aoAlterado={valor => setSenha(valor)} />
+                    aoAlterado={valor => setSenha(valor)} 
+                    type={'password'}/>
                 
                 <CampoTexto
                     obrigatorio={true}
