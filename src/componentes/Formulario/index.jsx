@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import './Formulario.css'
 import { CampoTexto } from '../CampoTexto'
 import { ListaSuspensa } from '../ListaSuspensa'

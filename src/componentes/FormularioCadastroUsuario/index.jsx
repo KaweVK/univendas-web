@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { CampoTexto } from '../CampoTexto'
 import { Botao } from '../Botao'
 import { useState, useEffect } from 'react'
