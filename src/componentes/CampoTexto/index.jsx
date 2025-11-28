@@ -6,7 +6,7 @@ export const CampoTexto = (props) => {
             <label>
                 {props.label}
             </label>
-            <input value={props.valor} onChange={evento => props.aoAlterado(evento.target.value)} required={props.obrigatorio} placeholder={props.placeholder}/> 
+            <input value={props.valor} onChange={evento => props.aoAlterado(evento.target.value)} required={props.obrigatorio} placeholder={props.placeholder} type={props.type}/> 
         </div>
     )
 }
