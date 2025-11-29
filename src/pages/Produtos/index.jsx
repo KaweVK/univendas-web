@@ -68,7 +68,7 @@ export const Produtos = () => {
                                 <CardProduto
                                     nome={produto.name}
                                     descricao={produto.description}
-                                    img={produto.imageUrl || 'public/imagens/Logos/avatar.webp'}
+                                    img={produto.image || 'public/imagens/Logos/avatar.webp'}
                                 />
                             </Link>
                         ))
@@ -82,7 +82,7 @@ export const Produtos = () => {
                                 <CardProduto
                                     nome={produto.name}
                                     descricao={produto.description}
-                                    img={produto.imageUrl || 'public/imagens/Logos/avatar.webp'}
+                                    img={produto.image || 'public/imagens/Logos/avatar.webp'}
                                 />
                             </Link>
                         ))

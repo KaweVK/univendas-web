@@ -107,7 +107,7 @@ export const NavBar = () => {
                                 <span className="sr-only">Open user menu</span>
                                 <img
                                     alt="Perfil"
-                                    src={usuario?.imageUrl || "public/imagens/Logos/avatar.webp"}
+                                    src={usuario?.image || "public/imagens/Logos/avatar.webp"}
                                     className="size-8 rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10"
                                 />
                             </MenuButton>
