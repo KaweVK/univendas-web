@@ -2,6 +2,7 @@
 import './Formulario.css'
 import { CampoTexto } from '../CampoTexto'
 import { ListaSuspensa } from '../ListaSuspensa'
+import { PreviewImagem } from '../PreviewImagem'
 import { Botao } from '../Botao'
 import { useState, useEffect } from 'react'
 
@@ -14,7 +15,6 @@ export const Formulario = (props) => {
     const [preco, setPreco] = useState('')
     const [categoria, setCategoria] = useState('')
     const [imagem, setImagem] = useState(null)
-
     const [previewImagem, setPreviewImagem] = useState(null)
 
     useEffect(() => {
@@ -86,15 +86,7 @@ export const Formulario = (props) => {
                     aoAlterado={valor => setImagem(valor)}
                     type={'file'} />
                 {props.produtoEdicao && previewImagem && (
-                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                        <p style={{ color: 'white', marginBottom: '5px' }}>Imagem Atual:</p>
-                        <img
-                            src={previewImagem}
-                            alt="Atual"
-                            style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '10px', border: '2px solid white' }}
-                        />
-                        <p style={{ fontSize: '12px', color: '#ddd' }}>(Envie outra apenas se quiser alterar)</p>
-                    </div>
+                    <PreviewImagem p={'Imagem atual:'} imagem={previewImagem}/>
                 )}
                 <ListaSuspensa
                     obrigatorio={true}
