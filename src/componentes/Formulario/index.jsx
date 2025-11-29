@@ -6,14 +6,16 @@ import { Botao } from '../Botao'
 import { useState, useEffect } from 'react'
 
 export const Formulario = (props) => {
+    console.log("Formulario recebeu:", props.produtoEdicao);
 
     const [nome, setNome] = useState('')
     const [descricao, setDescricao] = useState('')
     const [quantidade, setQuantidade] = useState('')
     const [preco, setPreco] = useState('')
     const [categoria, setCategoria] = useState('')
-    const [imagem, setImagem] = useState('')
+    const [imagem, setImagem] = useState(null)
 
+    const [previewImagem, setPreviewImagem] = useState(null)
 
     useEffect(() => {
         if (props.produtoEdicao) {
@@ -21,8 +23,8 @@ export const Formulario = (props) => {
             setDescricao(props.produtoEdicao.description || '');
             setQuantidade(props.produtoEdicao.amount || '');
             setPreco(props.produtoEdicao.price || '');
-            setImagem(props.produtoEdicao.imageUrl || '');
             setCategoria(props.produtoEdicao.category || '');
+            setPreviewImagem(props.produtoEdicao.image || null);
         }
     }, [props.produtoEdicao]);
 
@@ -41,8 +43,9 @@ export const Formulario = (props) => {
             setDescricao('')
             setQuantidade('')
             setPreco('')
-            setImagem('')
+            setImagem(null)
             setCategoria('')
+            setPreviewImagem(null)
         }
     }
 
@@ -57,8 +60,6 @@ export const Formulario = (props) => {
                     placeholder='Digite o nome do produto'
                     valor={nome}
                     aoAlterado={valor => setNome(valor)} />
-
-
                 <CampoTexto
                     obrigatorio={true}
                     label='Descrição'
@@ -78,11 +79,23 @@ export const Formulario = (props) => {
                     valor={preco}
                     aoAlterado={valor => setPreco(valor)} />
                 <CampoTexto
-                    obrigatorio={true}
+                    obrigatorio={false}
                     label='Imagem'
-                    placeholder='Digite o link da imagem do produto'
+                    placeholder='Imagem do produto'
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)} />
+                    aoAlterado={valor => setImagem(valor)}
+                    type={'file'} />
+                {props.produtoEdicao && previewImagem && (
+                    <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                        <p style={{ color: 'white', marginBottom: '5px' }}>Imagem Atual:</p>
+                        <img
+                            src={previewImagem}
+                            alt="Atual"
+                            style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '10px', border: '2px solid white' }}
+                        />
+                        <p style={{ fontSize: '12px', color: '#ddd' }}>(Envie outra apenas se quiser alterar)</p>
+                    </div>
+                )}
                 <ListaSuspensa
                     obrigatorio={true}
                     itens={props.categorias}
