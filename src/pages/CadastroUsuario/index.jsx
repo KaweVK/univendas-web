@@ -12,21 +12,27 @@ export const CadastroUsuario = () => {
 
   const gerenciarUsuario = async (dadosFormulario) => {
     try {
-      const payload = {
-        name: dadosFormulario.nome,
-        email: dadosFormulario.email,
-        password: dadosFormulario.senha,
-        phoneNumber: dadosFormulario.numero,
-        city: dadosFormulario.cidade,
-        imageUrl: dadosFormulario.imagem
+      const formData = new FormData();
+      formData.append('name', dadosFormulario.nome);
+      formData.append('email', dadosFormulario.email);
+      formData.append('password', dadosFormulario.senha); 
+      formData.append('phoneNumber', dadosFormulario.numero);
+      formData.append('city', dadosFormulario.cidade);
+      
+      if (dadosFormulario.imagem instanceof File) {
+          formData.append('image', dadosFormulario.imagem);
+      }
+
+      const config = {
+          headers: { 'Content-Type': 'multipart/form-data' }
       };
 
       if (usuarioParaEditar) {
-        await api.put(`/users/${usuarioParaEditar.id}`, payload);
+        await api.put(`/users/${usuarioParaEditar.id}`, formData, config);
         alert("Dados atualizados com sucesso!");
         navigate(`/usuario/${usuarioParaEditar.id}`);
       } else {
-        await api.post('/users', payload);
+        await api.post('/users', formData, config);
         alert("Usuário cadastrado com sucesso! Faça login.");
         navigate('/auth/login');
       }
