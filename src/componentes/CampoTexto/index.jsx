@@ -14,7 +14,7 @@ export const CampoTexto = (props) => {
             <label>
                 {props.label}
             </label>
-            <input value={props.type === 'file' ? undefined : props.value} onChange={aoDigitar} required={props.obrigatorio} placeholder={props.placeholder} type={props.type} />
+            <input value={props.type === 'file' ? undefined : props.valor} onChange={aoDigitar} required={props.obrigatorio} placeholder={props.placeholder} type={props.type} />
         </div>
     )
 }
