@@ -21,7 +21,6 @@ export const Produto = () => {
                 setProduto(resposta.data);
             } catch (erro) {
                 console.error("Erro ao buscar produto:", erro);
-                alert("Erro ao carregar o produto!");
                 navigate('/produtos');
             }
         };
@@ -39,7 +38,6 @@ export const Produto = () => {
                     setUsuario(resposta.data);
                 } catch (erro) {
                     console.error("Erro ao buscar usuario:", erro);
-                    alert("Erro ao carregar o usuario!");
                 }
             };
             carregarUsuario();
