@@ -35,7 +35,7 @@ export const Usuarios = () => {
                                 nome={usuario.name}
                                 email={usuario.email}
                                 cidade={usuario.city}
-                                img={usuario.imageUrl || '../../../public/imagens/Logos/avatar.webp'}
+                                img={usuario.image || '../../../public/imagens/Logos/avatar.webp'}
                             />
                         </Link>
                     ))
