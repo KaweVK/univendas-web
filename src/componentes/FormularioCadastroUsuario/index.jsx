@@ -87,10 +87,11 @@ export const FormularioCadastroUsuario = (props) => {
 
                 <CampoTexto
                     obrigatorio={false}
-                    label='URL da Foto (Opcional)'
+                    label='Foto (Opcional)'
                     placeholder='Link da imagem de perfil'
                     valor={imagem}
-                    aoAlterado={valor => setImagem(valor)} />
+                    aoAlterado={valor => setImagem(valor)} 
+                    type={'file'}/>
 
                 <Botao className={'botao-padrao'}>
                     {props.usuarioEdicao ? 'Salvar Alterações' : 'Cadastrar'}
