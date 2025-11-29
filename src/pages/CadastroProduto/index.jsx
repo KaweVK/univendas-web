@@ -37,6 +37,10 @@ export const CadastroProduto = () => {
       formData.append('category', produtoDoFormulario.categoria);
       formData.append('soldById', userId);
 
+      if (produtoDoFormulario.imagem instanceof File) {
+          formData.append('image', produtoDoFormulario.imagem);
+      }
+
       const config = {
         headers: { 'Content-Type': 'multipart/form-data' }
       };
