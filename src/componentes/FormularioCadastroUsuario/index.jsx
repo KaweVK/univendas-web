@@ -11,7 +11,7 @@ export const FormularioCadastroUsuario = (props) => {
     const [senha, setSenha] = useState('')
     const [numero, setNumero] = useState('')
     const [cidade, setCidade] = useState('')
-    const [imagem, setImagem] = useState('') 
+    const [imagem, setImagem] = useState(null) 
 
     useEffect(() => {
         if (props.usuarioEdicao) {
@@ -19,7 +19,6 @@ export const FormularioCadastroUsuario = (props) => {
             setEmail(props.usuarioEdicao.email || '');
             setNumero(props.usuarioEdicao.phoneNumber || '');
             setCidade(props.usuarioEdicao.city || '');
-            setImagem(props.usuarioEdicao.imageUrl || '');
         }
     }, [props.usuarioEdicao]);
 
@@ -40,7 +39,7 @@ export const FormularioCadastroUsuario = (props) => {
             setSenha('')
             setNumero('')
             setCidade('')
-            setImagem('')
+            setImagem(null)
         }
     }
 
@@ -88,7 +87,7 @@ export const FormularioCadastroUsuario = (props) => {
                 <CampoTexto
                     obrigatorio={false}
                     label='Foto (Opcional)'
-                    placeholder='Link da imagem de perfil'
+                    placeholder='Selecione a imagem'
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)} 
                     type={'file'}/>
