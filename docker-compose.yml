@@ -1,0 +1,16 @@
+services:
+  univendas-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: univendas-web
+    ports:
+      - "3000:80"
+    environment:
+      # Define a URL da API conforme configurado no seu api.js
+      - VITE_API_URL=http://localhost:8080
+    restart: always
+
+networks:
+  default:
+    driver: bridge
