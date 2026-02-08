@@ -35,7 +35,7 @@ export const Usuarios = () => {
                                 nome={usuario.name}
                                 email={usuario.email}
                                 cidade={usuario.city}
-                                img={usuario.imageUrl || '../../../public/imagens/Logos/avatar.webp'}
+                                img={usuario.image || '../../../public/imagens/Logos/avatar.webp'}
                             />
                         </Link>
                     ))
@@ -46,6 +46,9 @@ export const Usuarios = () => {
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
                 <Link to='/cadastro-produto'>
                     <Botao className="botao-padrao">Cadastrar Produto</Botao>
+                </Link>
+                <Link to='/produtos'>
+                    <Botao className="botao-padrao">Ver Produtos</Botao>
                 </Link>
             </div>
             <BarraRodape />

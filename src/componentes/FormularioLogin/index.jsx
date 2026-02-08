@@ -34,7 +34,8 @@ export const FormularioLogin = (props) => {
                     label='Senha' 
                     placeholder='Digite a sua senha'
                     valor={senha}
-                    aoAlterado={valor => setSenha(valor)}/>
+                    aoAlterado={valor => setSenha(valor)}
+                    type={'password'}/>
                 <Botao className={'botao-padrao'}>
                     Login
                 </Botao>

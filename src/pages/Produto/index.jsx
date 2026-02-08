@@ -21,7 +21,6 @@ export const Produto = () => {
                 setProduto(resposta.data);
             } catch (erro) {
                 console.error("Erro ao buscar produto:", erro);
-                alert("Erro ao carregar o produto!");
                 navigate('/produtos');
             }
         };
@@ -32,14 +31,13 @@ export const Produto = () => {
     useEffect(() => {
         if (produto) {
             const carregarUsuario = async () => {
-                const idVendedor = produto.soldById
+                const idVendedor = produto.soldBy.id
 
                 try {
                     const resposta = await api.get(`/users/${idVendedor}`);
                     setUsuario(resposta.data);
                 } catch (erro) {
                     console.error("Erro ao buscar usuario:", erro);
-                    alert("Erro ao carregar o usuario!");
                 }
             };
             carregarUsuario();
@@ -53,7 +51,7 @@ export const Produto = () => {
                 try {
                     const decoded = jwtDecode(token);
                     const usuarioLogadoId = String(decoded.id);
-                    const idVendedor = String(produto.soldById);
+                    const idVendedor = String(produto.soldBy.id);
 
                     // eslint-disable-next-line react-hooks/set-state-in-effect
                     setEDono(usuarioLogadoId === idVendedor);
@@ -111,7 +109,7 @@ export const Produto = () => {
                 nome={produto.name}
                 descricao={produto.description}
                 preco={`R$ ${produto.price}`}
-                img={produto.imageUrl || 'https://github.com/kawevk.png'}
+                img={produto.image}
             />
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>

@@ -101,7 +101,7 @@ export const Usuario = () => {
                 email={usuario.email}
                 telefone={usuario.phoneNumber}
                 cidade={usuario.city}
-                img={usuario.imageUrl || '../../../public/imagens/Logos/avatar.webp'}
+                img={usuario.image || '../../../public/imagens/Logos/avatar.webp'}
             />
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px' }}>
