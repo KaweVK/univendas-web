@@ -1,5 +1,6 @@
 import './FormularioLogin.css'
 import { useState } from 'react'
+import { Botao } from '../Botao'
 import { Link } from 'react-router-dom'
 import { CampoTexto } from '../CampoTexto'
 
@@ -71,12 +72,12 @@ export const FormularioLogin = ({ aoFazerLogin, href }) => {
                 </div>
 
                 <div className="mt-8 space-y-4">
-                    <button
+                    <Botao  
                         type="submit"
-                        className="w-full rounded-2xl bg-gradient-to-r from-[#47104C] to-[#6A2C70] px-5 py-4 text-base font-semibold text-white transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-200"
+                        className="botao-padrao"
                     >
                         Login
-                    </button>
+                    </Botao>
 
                     <p className="text-center text-sm text-slate-500">
                         Ainda nao tem conta?{' '}
