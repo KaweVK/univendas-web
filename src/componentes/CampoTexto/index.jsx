@@ -1,5 +1,3 @@
-import './CampoTexto.css'
-
 export const CampoTexto = (props) => {
     const aoDigitar = (evento) => {
         if (props.type === 'file') {
@@ -10,11 +8,21 @@ export const CampoTexto = (props) => {
     }
 
     return (
-        <div className="campo_texto">
-            <label>
+        <div>
+            <label htmlFor={props.id} className={props.labelClassName}>
                 {props.label}
             </label>
-            <input value={props.type === 'file' ? undefined : props.valor} onChange={aoDigitar} required={props.obrigatorio} placeholder={props.placeholder} type={props.type} />
+            <input
+                id={props.id}
+                name={props.name}
+                type={props.type}
+                autoComplete={props.autoComplete}
+                required={props.obrigatorio}
+                placeholder={props.placeholder}
+                value={props.type === 'file' ? undefined : props.valor}
+                onChange={aoDigitar}
+                className={props.className}
+            />
         </div>
     )
 }

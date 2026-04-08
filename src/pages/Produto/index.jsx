@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import { BarraRodape } from '../../componentes/BarraRodape/index.jsx';
-import { DetalheProduto } from '../../componentes/DetalheProduto/index.jsx';
+import {
+    ChatBubbleLeftRightIcon,
+    PencilSquareIcon,
+    TrashIcon,
+    ArrowLeftIcon,
+} from '@heroicons/react/24/outline';
 import { Botao } from '../../componentes/Botao/index.jsx';
+import { DetalheProduto } from '../../componentes/DetalheProduto/index.jsx';
 import api from '../../services/api.js';
-import { NavBar } from '../../componentes/NavBar/index.jsx';
+import { FundoDecorado } from '../../componentes/FundoDecorado';
+import { Link } from 'react-router-dom';
 
 export const Produto = () => {
     const { id } = useParams();
@@ -20,126 +26,159 @@ export const Produto = () => {
                 const resposta = await api.get(`/shop/${id}`);
                 setProduto(resposta.data);
             } catch (erro) {
-                console.error("Erro ao buscar produto:", erro);
+                console.error('Erro ao buscar produto:', erro);
                 navigate('/produtos');
             }
         };
-        carregarProduto();
 
+        carregarProduto();
     }, [id, navigate]);
 
     useEffect(() => {
-        if (produto) {
+        if (produto?.soldBy?.id) {
             const carregarUsuario = async () => {
-                const idVendedor = produto.soldBy.id
-
                 try {
-                    const resposta = await api.get(`/users/${idVendedor}`);
+                    const resposta = await api.get(`/users/${produto.soldBy.id}`);
                     setUsuario(resposta.data);
                 } catch (erro) {
-                    console.error("Erro ao buscar usuario:", erro);
+                    console.error('Erro ao buscar usuario:', erro);
                 }
             };
+
             carregarUsuario();
         }
     }, [produto]);
 
     useEffect(() => {
-        if (produto) {
+        if (produto?.soldBy?.id) {
             const token = localStorage.getItem('token');
+
             if (token) {
                 try {
                     const decoded = jwtDecode(token);
                     const usuarioLogadoId = String(decoded.id);
                     const idVendedor = String(produto.soldBy.id);
 
-                    // eslint-disable-next-line react-hooks/set-state-in-effect
                     setEDono(usuarioLogadoId === idVendedor);
                 } catch (erro) {
-                    console.error("Erro ao decodificar token", erro);
+                    console.error('Erro ao decodificar token', erro);
                     setEDono(false);
                 }
-            };
-            
+            } else {
+                setEDono(false);
+            }
         }
     }, [produto]);
 
     const excluirProduto = async () => {
         if (!eDono) {
-            alert("Você não pode excluir um produto de outro usuário!")
-            navigate(`/produto/${id}`)
+            alert('Voce nao pode excluir um produto de outro usuario!');
+            navigate(`/produto/${id}`);
+            return;
         }
 
-        if (window.confirm("Tem certeza que deseja excluir este produto?")) {
+        if (window.confirm('Tem certeza que deseja excluir este produto?')) {
             try {
                 await api.delete(`/shop/${id}`);
-                alert("Produto excluído com sucesso!");
+                alert('Produto excluido com sucesso!');
                 navigate('/produtos');
             } catch (erro) {
-                console.error("Erro ao excluir:", erro);
-                alert("Não foi possível excluir o produto.");
+                console.error('Erro ao excluir:', erro);
+                alert('Nao foi possivel excluir o produto.');
             }
         }
     };
 
+    const verificarEdicao = () => {
+        if (!eDono) {
+            alert('Voce nao pode editar o produto de outro usuario!');
+            navigate(`/produto/${id}`);
+            return;
+        }
+
+        navigate('/cadastro-produto', { state: { produtoParaEditar: produto } });
+    };
+
     if (!produto) {
         return (
-            <>
-                <div style={{ textAlign: 'center', margin: '50px' }}>
-                    <h2>Carregando detalhes...</h2>
+            <FundoDecorado>
+                <div className="rounded-[32px] border border-white/60 bg-white/75 p-10 text-center shadow-[0_32px_90px_-34px_rgba(62,16,68,0.45)] backdrop-blur-xl">
+                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#6b2e74]/70">
+                        Produto
+                    </p>
+                    <h2 className="mt-3 text-3xl font-semibold text-slate-900">
+                        Carregando detalhes do produto...
+                    </h2>
                 </div>
-                <BarraRodape />
-            </>
+            </FundoDecorado>
         );
     }
 
-    const verificarEdição = async () => {
-        if (!eDono) {
-            alert("Você não pode editar o produto de outro usuário!")
-            navigate(`/produto/${id}`)
-        }
-
-        navigate("/cadastro-produto", { state: { produtoParaEditar: produto } })
-    }
+    const numeroWhatsapp = usuario?.phoneNumber?.replace(/\D/g, '');
 
     return (
-        <>
-            <NavBar />
+        <FundoDecorado>
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+                <Link
+                    to="/produtos"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-4 py-2 text-sm font-semibold text-[#4c1454] shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md"
+                >
+                    <ArrowLeftIcon className="size-4" />
+                    Voltar
+                </Link>
+                {eDono ? (
+                    <span className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">
+                        Este anúncio é seu
+                    </span>
+                ) : null}
+            </div>
             <DetalheProduto
                 nome={produto.name}
                 descricao={produto.description}
-                preco={`R$ ${produto.price}`}
+                preco={produto.price}
                 img={produto.image}
+                categoria={produto.category}
+                quantidade={produto.amount}
+                vendedor={usuario}
+                acoes={
+                    <>
+                        {eDono ? (
+                            <Botao
+                                type="button"
+                                onClick={verificarEdicao}
+                                className={"botao-padrao"}
+                            >
+                                <PencilSquareIcon className="size-5" />
+                                Editar produto
+                            </Botao>
+                        ) : null}
+
+                        {eDono ? (
+                            <Botao
+                                type="button"
+                                onClick={excluirProduto}
+                                className={"botao-excluir"}
+                            >
+                                <TrashIcon className="size-5" />
+                                Excluir produto
+                            </Botao>
+                        ) : null}
+
+                        {usuario && numeroWhatsapp ? (
+                            <Botao
+                                as="a"
+                                href={`https://wa.me/${numeroWhatsapp}`}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={"botao-whatsapp"}
+                            >
+                                <ChatBubbleLeftRightIcon className="size-5" />
+                                Falar com vendedor
+                            </Botao>
+                        ) : null}
+                    </>
+                }
             />
-
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-                {eDono &&
-                    (<div onClick={verificarEdição}>
-                        <Botao className={'botao-padrao'}>Editar Produto</Botao>
-                    </div>
-                    )
-                }
-
-                {eDono &&
-                    (<div onClick={excluirProduto}>
-                        <Botao className={'botao-excluir'}>Excluir Produto</Botao>
-                    </div>
-                    )
-                }
-
-                {usuario &&
-                    (<Link to={`https://wa.me/${usuario.phoneNumber}`} target='_blank'>
-                        <Botao className={'botao-whatsapp'}>Entrar em contato</Botao>
-                    </Link>
-                    )
-                }
-
-                <Link to='/produtos'>
-                    <Botao className={'botao-padrao'}>Voltar</Botao>
-                </Link>
-            </div>
-
-            <BarraRodape />
-        </>
-    )
-}
+        </FundoDecorado>
+    );
+};

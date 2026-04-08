@@ -2,8 +2,8 @@
 export const PreviewImagem = ({ p, imagem }) => {
     return (
         <>
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                <p style={{ color: 'white', marginBottom: '5px' }}>{p}</p>
+            <div>
+                <p className="mb-2 block text-sm font-medium text-slate-700">{p}</p>
                 <img
                     src={imagem}
                     alt="Atual"
