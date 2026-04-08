@@ -3,6 +3,7 @@ import { FormularioCadastroUsuario } from '../../componentes/FormularioCadastroU
 import { Banner } from '../../componentes/Banner/index.jsx'
 import api from '../../services/api.js'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { FundoDecorado } from '../../componentes/FundoDecorado/index.jsx'
 
 export const CadastroUsuario = () => {
   const navigate = useNavigate();
@@ -52,24 +53,7 @@ export const CadastroUsuario = () => {
 
   return (
     <>
-      <main className="relative isolate overflow-hidden bg-[#f7eff8]">
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,rgba(107,46,116,0.14),transparent)]"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute left-[8%] top-24 h-64 w-64 rounded-full bg-fuchsia-200/60 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute right-[6%] top-1/3 h-72 w-72 rounded-full bg-violet-200/60 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-white/80 blur-3xl"
-        />
-
+      <FundoDecorado>
         <section className="relative mx-auto flex min-h-screen max-w-6xl items-center px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
           <div className="grid overflow-hidden rounded-[32px] border border-white/60 bg-white/55 shadow-[0_32px_90px_-34px_rgba(62,16,68,0.45)] backdrop-blur-xl lg:grid-cols-[1.08fr_0.92fr]">
             <Banner />
@@ -83,7 +67,7 @@ export const CadastroUsuario = () => {
             </div>
           </div>
         </section>
-      </main>
+      </FundoDecorado>
       <BarraRodape />
     </>
   )
