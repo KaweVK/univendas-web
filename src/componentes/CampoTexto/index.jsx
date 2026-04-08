@@ -1,5 +1,3 @@
-import './CampoTexto.css'
-
 export const CampoTexto = (props) => {
     const aoDigitar = (evento) => {
         if (props.type === 'file') {

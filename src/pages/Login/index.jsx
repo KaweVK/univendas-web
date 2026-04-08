@@ -19,8 +19,6 @@ export const Login = () => {
             const token = resposta.data.token;
 
             localStorage.setItem('token', token);
-
-            alert('Login realizado com sucesso!');
             navigate('/produtos');
 
         } catch (erro) {
