@@ -1,47 +1,19 @@
-.botao-padrao {
-    background-color: #47104C;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 18px;
-    padding: 32px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    margin: 32px 0;
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .botao-padrao {
+        @apply w-full rounded-2xl bg-gradient-to-r from-[#47104C] to-[#6A2C70] px-5 py-4 text-base font-semibold text-white transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-200 mb-8 cursor-pointer;
+    }
 }
 
-.botao-padrao:hover {
-    background-color: #380b38;
-}
+    .botao-excluir {
+        @apply w-full rounded-2xl bg-gradient-to-r from-[#8F3534] to-[#A63533] px-5 py-4 text-base font-semibold text-white transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-200 mb-8 cursor-pointer;
+    }
 
-.botao-excluir {
-    background-color: #a60202;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 18px;
-    padding: 32px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    margin: 32px 0;
-}
+    .botao-whatsapp {
+        @apply w-full rounded-2xl bg-gradient-to-r from-[#0d8002] to-[#10a602] px-5 py-4 text-base font-semibold text-white transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-200 mb-8 cursor-pointer;
+    }
 
-.botao-excluir:hover {
-    background-color: #4f0505;
-}
-
-.botao-whatsapp {
-    background-color: #10a602;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 18px;
-    padding: 32px;
-    border: none;
-    cursor: pointer;
-    color: white;
-    margin: 32px 0;
-}
-
-.botao-whatsapp:hover {
-    background-color: #096900;
-}

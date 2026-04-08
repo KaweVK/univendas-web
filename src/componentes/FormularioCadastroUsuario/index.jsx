@@ -162,7 +162,7 @@ export const FormularioCadastroUsuario = (props) => {
 
                 <div className="mt-8 space-y-4">
                     <Botao
-                        className={'w-full rounded-2xl bg-gradient-to-r from-[#47104C] to-[#6A2C70] px-5 py-4 text-base font-semibold text-white transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-200'}
+                        className={'botao-padrao'}
                     >
                         {props.usuarioEdicao ? 'Salvar Alterações' : 'Cadastrar'}
                     </Botao>
