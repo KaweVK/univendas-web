@@ -1,7 +1,11 @@
 import './Botao.css';
 
 export const Botao = (props) => {
-    return(
-        <button className={props.className}>{props.children}</button>
-    )
-}
+    const { as: Componente = 'button', className, children, ...resto } = props;
+
+    return (
+        <Componente className={className} {...resto}>
+            {children}
+        </Componente>
+    );
+};

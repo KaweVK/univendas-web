@@ -1,6 +1,6 @@
 export const FundoDecorado = ({ children }) => (
     <>
-        <main className="relative isolate overflow-hidden bg-[#f7eff8]">
+        <main className="relative min-h-screen isolate overflow-hidden bg-[#f7eff8]">
             <div
                 aria-hidden="true"
                 className="absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,rgba(107,46,116,0.14),transparent)]"
