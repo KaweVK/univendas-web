@@ -1,6 +1,7 @@
 import './FormularioLogin.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CampoTexto } from '../CampoTexto'
 
 const labelClassName = 'mb-2 block text-sm font-medium text-slate-700'
 const inputClassName =
@@ -8,8 +9,8 @@ const inputClassName =
 
 export const FormularioLogin = ({ aoFazerLogin, href }) => {
 
-    const [email, setEmail] = useState('') 
-    const [senha, setSenha] = useState('') 
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
@@ -40,39 +41,33 @@ export const FormularioLogin = ({ aoFazerLogin, href }) => {
                 </div>
 
                 <div className="space-y-5">
-                    <div>
-                        <label htmlFor="email" className={labelClassName}>
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            autoComplete="email"
-                            required
-                            placeholder="Digite o email do login"
-                            value={email}
-                            onChange={(evento) => setEmail(evento.target.value)}
-                            className={inputClassName}
-                        />
-                    </div>
+                    <CampoTexto
+                        id="email"
+                        name="email"
+                        type="email"
+                        label="Email"
+                        labelClassName={labelClassName}
+                        autoComplete="email"
+                        obrigatorio={true}
+                        placeholder="Digite o email do login"
+                        value={email}
+                        aoAlterado={setEmail}
+                        className={inputClassName}
+                    />
 
-                    <div>
-                        <label htmlFor="senha" className={labelClassName}>
-                            Senha
-                        </label>
-                        <input
-                            id="senha"
-                            name="senha"
-                            type="password"
-                            autoComplete="current-password"
-                            required
-                            placeholder="Digite a sua senha"
-                            value={senha}
-                            onChange={(evento) => setSenha(evento.target.value)}
-                            className={inputClassName}
-                        />
-                    </div>
+                    <CampoTexto
+                        id="senha"
+                        name="senha"
+                        type="password"
+                        label="Senha"
+                        labelClassName={labelClassName}
+                        autoComplete="current-password"
+                        obrigatorio={true}
+                        placeholder="Digite a sua senha"
+                        value={senha}
+                        aoAlterado={setSenha}
+                        className={inputClassName}
+                    />
                 </div>
 
                 <div className="mt-8 space-y-4">
