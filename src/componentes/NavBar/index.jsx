@@ -129,7 +129,7 @@ export const NavBar = () => {
                                         onClick={realizarLogout}
                                         className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:outline-hidden"
                                     >
-                                        Sign out
+                                        Sair
                                     </a>
                                 </MenuItem>
                             </MenuItems>
